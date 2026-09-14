@@ -1,0 +1,16 @@
+{
+  "appRules": [
+    { "app": "IntelliJ IDEA", "category": "学习", "subcategory": "编程" },
+    { "app": "Chrome", "category": "", "subcategory": "" },
+    { "app": "GTA V", "category": "游戏", "subcategory": "游戏" }
+  ],
+  "titleRules": [
+    { "keyword": "SpringBoot", "category": "学习", "subcategory": "Java" },
+    { "keyword": "MyBatis", "category": "学习", "subcategory": "Java" },
+    { "keyword": "日语", "category": "学习", "subcategory": "日语" }
+  ],
+  "urlRules": [
+    { "keyword": "youtube.com", "category": "娱乐", "subcategory": "视频" },
+    { "keyword": "bilibili.com", "category": "娱乐", "subcategory": "视频" }
+  ]
+}
