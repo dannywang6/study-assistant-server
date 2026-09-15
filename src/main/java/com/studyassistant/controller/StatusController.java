@@ -7,7 +7,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/agent")
-public class AgentStatusController {
+public class StatusController {
 
     @PostMapping("/status")
     public ApiResponse<Void> receiveStatus(@RequestBody Map<String, Object> body) {

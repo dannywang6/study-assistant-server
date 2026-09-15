@@ -10,4 +10,38 @@
         VALUES (#{app}, #{title}, #{url}, #{category}, #{subcategory}, #{startTime}, #{endTime})
 
     </insert>
+
+    <sql id="filter">
+        <where>
+            <if test="startTime != null">
+                start_time &gt;= #{startTime}
+            </if>
+            <if test="endTime != null">
+                AND start_time &lt;= #{endTime}
+            </if>
+            <if test="category != null and category != ''">
+                AND category = #{category}
+            </if>
+            <if test="subcategory != null and subcategory != ''">
+                AND subcategory = #{subcategory}
+            </if>
+            <if test="app != null and app != ''">
+                AND app LIKE CONCAT('%', #{app}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <select id="selectPage" resultType="ActivityEntity">
+        SELECT id, app, title, url, cayegory, subcategory, start_time, end_time
+        FROM activity_record
+        <include refid="filter"/>
+        ORDER BY start_time DESC ,id DESC
+        LIMIT #{size} OFFSET #{offset}
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT COUNT(*)
+        FROM activity_record
+        <include refid="filter"></include>
+    </select>
 </mapper>

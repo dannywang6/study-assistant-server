@@ -16,10 +16,6 @@ public class ActivityReportRequestDTO {
 
     private String url;
 
-    private String category;
-
-    private String subcategory;
-
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;
