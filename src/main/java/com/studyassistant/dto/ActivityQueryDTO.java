@@ -21,9 +21,9 @@ public class ActivityQueryDTO {
 
     private String app;
 
-    private Integer page;
+    private Integer page = 1;
 
-    private Integer size;
+    private Integer size = 20;
 
     public int getOffset() {
         return (page - 1) * size;

@@ -32,7 +32,7 @@
     </sql>
 
     <select id="selectPage" resultType="ActivityEntity">
-        SELECT id, app, title, url, cayegory, subcategory, start_time, end_time
+        SELECT id, app, title, url, category, subcategory, start_time, end_time
         FROM activity_record
         <include refid="filter"/>
         ORDER BY start_time DESC ,id DESC

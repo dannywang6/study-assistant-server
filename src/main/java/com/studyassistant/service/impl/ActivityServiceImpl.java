@@ -1,6 +1,8 @@
 package com.studyassistant.service.impl;
 
 import com.studyassistant.converter.ActivityConverter;
+import com.studyassistant.dto.ActivityPageResponseDTO;
+import com.studyassistant.dto.ActivityQueryDTO;
 import com.studyassistant.dto.ActivityReportRequestDTO;
 import com.studyassistant.dto.IdleReportRequestDTO;
 import com.studyassistant.entity.ActivityEntity;
@@ -54,6 +56,19 @@ public class ActivityServiceImpl implements ActivityService {
                 }
             }
         }
+    }
+
+    @Override
+    public ActivityPageResponseDTO queryPage(ActivityQueryDTO dto) {
+        int page = dto.getPage() < 1 ? 1 : dto.getPage();
+        int size = dto.getSize() < 1 ? 20 : dto.getSize();
+        if (size > 200) size = 200;
+        dto.setPage(page);
+        dto.setSize(size);
+
+        long total = activityMapper.count(dto);
+        List<ActivityEntity> list = activityMapper.selectPage(dto);
+        return new ActivityPageResponseDTO(total, page, size, list);
     }
 
 }
