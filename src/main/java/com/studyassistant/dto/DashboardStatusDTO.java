@@ -1,19 +1,23 @@
 package com.studyassistant.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import tools.jackson.databind.annotation.JsonDeserialize;
 
 import java.time.LocalDateTime;
 
 @Data
-public class CurrentStatusRequestDTO {
+@AllArgsConstructor
+public class DashboardStatusDTO {
+
     private String agentId;
     private String app;
     private String title;
     private String url;
-    private String activityEventId;
+    private String category;
+    private String subcategory;
     private LocalDateTime activityStartTime;
-    private LocalDateTime observedAt;
+    private int elapsedMinutes;
     private boolean idle;
-    private LocalDateTime idleStartTime;
+    private boolean online;
+    private LocalDateTime lastSeen;
 }

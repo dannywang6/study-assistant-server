@@ -15,7 +15,7 @@ import java.util.Map;
 
 
 @Service
-public class CategoryImpl implements CategoryService {
+public class CategoryServiceImpl implements CategoryService {
 
     private final ObjectMapper objectMapper;
 
@@ -23,7 +23,7 @@ public class CategoryImpl implements CategoryService {
     private List<Map<String, String>> titleRules = Collections.emptyList();
     private List<Map<String, String>> urlRules = Collections.emptyList();
 
-    public CategoryImpl(ObjectMapper objectMapper) {
+    public CategoryServiceImpl(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 

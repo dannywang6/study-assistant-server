@@ -12,7 +12,6 @@ import com.studyassistant.mapper.IdleMapper;
 import com.studyassistant.model.Category;
 import com.studyassistant.service.ActivityService;
 import com.studyassistant.service.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,17 +21,20 @@ import java.util.List;
 @Service
 public class ActivityServiceImpl implements ActivityService {
 
-    @Autowired
-    private ActivityMapper activityMapper;
+    private final ActivityMapper activityMapper;
+    private final IdleMapper idleMapper;
+    private final ActivityConverter converter;
+    private final CategoryService categoryService;
 
-    @Autowired
-    private IdleMapper idleMapper;
-
-    @Autowired
-    private ActivityConverter converter;
-
-    @Autowired
-    private CategoryService categoryService;
+    public ActivityServiceImpl(ActivityMapper activityMapper,
+                               IdleMapper idleMapper,
+                               ActivityConverter converter,
+                               CategoryService categoryService) {
+        this.activityMapper = activityMapper;
+        this.idleMapper = idleMapper;
+        this.converter = converter;
+        this.categoryService = categoryService;
+    }
 
     @Override
     @Transactional
